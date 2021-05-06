@@ -1,6 +1,9 @@
 from selenium.webdriver.chrome.options import Options
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import config
 import datetime
 from time import sleep
@@ -41,14 +44,16 @@ def login(url: str, username: str, password: str) -> webdriver:
         driver.set_window_size(800, 600)
         print(f'Opening {url}...')
         driver.get(url)
-        sleep(3)
+        element = WebDriverWait(driver, 3).until(
+            EC.presence_of_element_located((By.ID, 'username')))
         user = driver.find_element_by_id("username")
         print(f'Inserting user {username}')
         user.send_keys(username)
         passw = driver.find_element_by_id("password")
         passw.send_keys(password)
         passw.send_keys(Keys.ENTER)
-        sleep(3)
+        element = WebDriverWait(driver, 3).until(
+            EC.presence_of_element_located((By.ID, 'div-fichaje-action')))
         print("Login succeded")
         return driver
     except Exception as e:

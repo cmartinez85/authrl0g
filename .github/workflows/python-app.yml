@@ -6,8 +6,9 @@ name: Python application
 on:
   schedule:
     - cron:  '10,25,55 * * * 1-5'
-  branch: 
-    - master
+  push:
+    branches: 
+    - 'master'
 jobs:
   track:
     runs-on: ubuntu-latest

@@ -6,7 +6,10 @@ url = "https://app.hrlog.es/admin/login"
 
 afternoon_shift_weeks = [
     18,
-
+    21,
+    24,
+    27,
+    30
 ]
 
 afternoon_shift = {

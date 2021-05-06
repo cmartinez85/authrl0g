@@ -44,6 +44,7 @@ def login(url: str, username: str, password: str) -> webdriver:
         driver.set_window_size(800, 600)
         print(f'Opening {url}...')
         driver.get(url)
+        sleep(10)
         element = WebDriverWait(driver, 3).until(
             EC.presence_of_element_located((By.ID, 'username')))
         user = driver.find_element_by_id("username")
@@ -52,6 +53,7 @@ def login(url: str, username: str, password: str) -> webdriver:
         passw = driver.find_element_by_id("password")
         passw.send_keys(password)
         passw.send_keys(Keys.ENTER)
+        sleep(10)
         element = WebDriverWait(driver, 3).until(
             EC.presence_of_element_located((By.ID, 'div-fichaje-action')))
         print("Login succeded")
